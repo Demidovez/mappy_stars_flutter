@@ -35,11 +35,13 @@ class _TabsState extends State<Tabs> {
         return false;
       },
       child: Scaffold(
-        backgroundColor: Colors.grey[200],
         appBar: AppBar(
-          title: Text(
-            _tabs[_currentIndex].title,
-            style: const TextStyle(color: Color(0xFF4a5660)),
+          title: Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Text(
+              _tabs[_currentIndex].title,
+              style: const TextStyle(color: Color(0xFF4a5660)),
+            ),
           ),
           elevation: 0,
           backgroundColor: Colors.white,

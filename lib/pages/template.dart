@@ -12,30 +12,17 @@ class _TemplateState extends State<Template> {
   List templates = [];
 
   @override
-  void initState() {
-    super.initState();
-
-    templates.addAll(
-        ["Классика", "Полусфера", "Полароид", "Полная", "Под звездами"]);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: const Text(
-          "Шаблоны",
-          style: TextStyle(color: Color(0xFF4a5660)),
-        ),
         elevation: 0,
-        backgroundColor: Colors.white,
+        toolbarHeight: 0,
+        backgroundColor: const Color(0xFFEDEEF1),
         systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
+          statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.dark,
           statusBarBrightness: Brightness.light,
         ),
-        // centerTitle: true,
       ),
       body: const Center(child: Text("Шаблон")),
     );

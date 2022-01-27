@@ -12,7 +12,12 @@ void main() {
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    theme: ThemeData(primaryColor: const Color(0xFF4a5660)),
+    theme: ThemeData(
+        scaffoldBackgroundColor: const Color(0xFFEDEEF1),
+        primaryColor: const Color(0xFF4a5660),
+        textTheme: const TextTheme(
+          bodyText2: TextStyle(color: Color(0xFF4a5660)),
+        )),
     initialRoute: Routes.Tabs,
     routes: {
       Routes.Tabs: (context) => const Tabs(),
