@@ -1,8 +1,8 @@
 class TemplateCard {
   final String title;
-  final String key;
+  final String type;
   final String desc;
   final String imageName;
 
-  TemplateCard(this.title, this.key, this.desc, this.imageName);
+  TemplateCard(this.title, this.type, this.desc, this.imageName);
 }

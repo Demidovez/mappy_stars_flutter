@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:mappy_stars/constants/constants.dart';
-import 'package:mappy_stars/models/template_card.dart';
+import 'package:mappy_stars/models/project_card.dart';
 
-class TemplateCardItem extends StatelessWidget {
-  final TemplateCard template;
+class ProjectCardItem extends StatelessWidget {
+  final ProjectCard project;
 
-  const TemplateCardItem({Key? key, required this.template}) : super(key: key);
+  const ProjectCardItem({Key? key, required this.project}) : super(key: key);
 
-  void goToTemplate(BuildContext context) {
+  void goToProject(BuildContext context) {
     Navigator.pushNamed(context, Routes.Template);
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => goToTemplate(context),
+      onTap: () => goToProject(context),
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -26,9 +27,9 @@ class TemplateCardItem extends StatelessWidget {
                     flex: 2,
                     child: Image(
                         image:
-                            AssetImage('assets/images/' + template.imageName))),
+                            AssetImage('assets/images/' + project.imageName))),
                 Expanded(
-                  flex: 3,
+                  flex: 4,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 16.0),
                     child: Column(
@@ -39,29 +40,34 @@ class TemplateCardItem extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              template.title,
+                              project.title,
                               style: const TextStyle(
                                   fontSize: 19, fontWeight: FontWeight.w700),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 8.0),
-                              child: Text(template.desc),
+                              child: Text(project.desc),
                             ),
                           ],
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 8.0),
-                          child: ElevatedButton(
-                            onPressed: () => goToTemplate(context),
-                            child: const Text('Создать'),
-                            style: ElevatedButton.styleFrom(
-                              primary: const Color(0xFF5bc3f1),
-                              elevation: 0,
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                              shadowColor: Colors.transparent,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
+                          child: Opacity(
+                            opacity: 0.6,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  project.location,
+                                  style: const TextStyle(fontSize: 12),
+                                ),
+                                Text(
+                                  // DateFormat('yyyy-MM-dd – kk:mm').format(project.date),
+                                  Jiffy(project.date)
+                                      .format("dd MMMM yyyy, hh:mm"),
+                                  style: const TextStyle(fontSize: 12),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -80,3 +86,5 @@ class TemplateCardItem extends StatelessWidget {
     );
   }
 }
+
+class DateFormat {}

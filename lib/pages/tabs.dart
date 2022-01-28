@@ -40,7 +40,11 @@ class _TabsState extends State<Tabs> {
             padding: const EdgeInsets.only(left: 8.0),
             child: Text(
               _tabs[_currentIndex].title,
-              style: const TextStyle(color: Color(0xFF4a5660)),
+              style: const TextStyle(
+                color: Color(0xFF4a5660),
+                fontWeight: FontWeight.w800,
+                // fontSize: 20
+              ),
             ),
           ),
           elevation: 0,
