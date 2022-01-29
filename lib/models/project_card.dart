@@ -6,6 +6,5 @@ class ProjectCard {
   final String location;
   final DateTime date;
 
-  ProjectCard(this.title, this.type, this.desc, this.imageName, this.location,
-      this.date);
+  ProjectCard(this.title, this.type, this.desc, this.imageName, this.location, this.date);
 }

@@ -28,7 +28,6 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
       color: Colors.white,
       child: ListView.builder(
           physics: const ScrollPhysics(),
@@ -48,17 +47,14 @@ class _SettingsState extends State<Settings> {
                         padding: const EdgeInsets.only(right: 16.0),
                         child: SvgPicture.asset(
                           'assets/icons/' + links[index].iconName,
-                          color: links[index].isChangeColorIcon
-                              ? const Color(0xFF4a5660)
-                              : null,
+                          color: links[index].isChangeColorIcon ? const Color(0xFF4a5660) : null,
                           width: 25,
                         ),
                       ),
                       Flexible(
                         child: Text(
                           links[index].title,
-                          style: const TextStyle(
-                              fontSize: 16.0, fontWeight: FontWeight.w600),
+                          style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600),
                         ),
                       ),
                     ],

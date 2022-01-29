@@ -19,36 +19,16 @@ class _ProjectsState extends State<Projects> {
     super.initState();
 
     projects.addAll([
-      ProjectCard(
-          "Маме на ДР",
-          "classic_v1",
-          "Возможность изменять размеры карты",
-          "classic_v1.jpeg",
-          "Москва, Россия",
+      ProjectCard("Маме на ДР", "classic_v1", "Возможность изменять размеры карты", "classic_v1.jpeg", "Москва, Россия",
           DateTime.now()),
-      ProjectCard("Новый год", "half_v1", "Изменение высоты полусферы",
-          "half_v1.jpeg", "д. Нижние Устюки, Россия", DateTime.now()),
-      ProjectCard(
-          "Проверка",
-          "polaroid_v1",
-          "Возможность изменять отступ карты и ее высоту",
-          "polaroid_v1.jpeg",
-          "Минск, Беларусь",
+      ProjectCard("Новый год", "half_v1", "Изменение высоты полусферы", "half_v1.jpeg", "д. Нижние Устюки, Россия",
           DateTime.now()),
-      ProjectCard(
-          "Полная",
-          "full_v1",
-          "Различный выбор цвета и размера блока с текстом",
-          "full_v1.jpeg",
-          "Москва, Россия",
-          DateTime.now()),
-      ProjectCard(
-          "С картинкой",
-          "understars_v1",
-          "Выбор изображений для фона из списка",
-          "understars_v1.jpeg",
-          "Гродно, Россия",
-          DateTime.now())
+      ProjectCard("Проверка", "polaroid_v1", "Возможность изменять отступ карты и ее высоту", "polaroid_v1.jpeg",
+          "Минск, Беларусь", DateTime.now()),
+      ProjectCard("Полная", "full_v1", "Различный выбор цвета и размера блока с текстом", "full_v1.jpeg",
+          "Москва, Россия", DateTime.now()),
+      ProjectCard("С картинкой", "understars_v1", "Выбор изображений для фона из списка", "understars_v1.jpeg",
+          "Гродно, Россия", DateTime.now())
     ]);
   }
 

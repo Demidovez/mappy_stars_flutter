@@ -23,11 +23,7 @@ class ProjectCardItem extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                    flex: 2,
-                    child: Image(
-                        image:
-                            AssetImage('assets/images/' + project.imageName))),
+                Expanded(flex: 2, child: Image(image: AssetImage('assets/images/' + project.imageName))),
                 Expanded(
                   flex: 4,
                   child: Padding(
@@ -41,8 +37,7 @@ class ProjectCardItem extends StatelessWidget {
                           children: [
                             Text(
                               project.title,
-                              style: const TextStyle(
-                                  fontSize: 19, fontWeight: FontWeight.w700),
+                              style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w700),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 8.0),
@@ -63,8 +58,7 @@ class ProjectCardItem extends StatelessWidget {
                                 ),
                                 Text(
                                   // DateFormat('yyyy-MM-dd – kk:mm').format(project.date),
-                                  Jiffy(project.date)
-                                      .format("dd MMMM yyyy, hh:mm"),
+                                  Jiffy(project.date).format("dd MMMM yyyy, hh:mm"),
                                   style: const TextStyle(fontSize: 12),
                                 ),
                               ],
@@ -80,8 +74,7 @@ class ProjectCardItem extends StatelessWidget {
           ),
         ),
         elevation: 0,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8))),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
       ),
     );
   }

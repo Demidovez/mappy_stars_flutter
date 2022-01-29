@@ -17,16 +17,11 @@ class _TemplatesState extends State<Templates> {
     super.initState();
 
     templates.addAll([
-      TemplateCard("Классика", "classic_v1",
-          "Возможность изменять размеры карты", "classic_v1.jpeg"),
-      TemplateCard(
-          "Полусфера", "half_v1", "Изменение высоты полусферы", "half_v1.jpeg"),
-      TemplateCard("Полароид", "polaroid_v1",
-          "Возможность изменять отступ карты и ее высоту", "polaroid_v1.jpeg"),
-      TemplateCard("Полная", "full_v1",
-          "Различный выбор цвета и размера блока с текстом", "full_v1.jpeg"),
-      TemplateCard("Под звездами", "understars_v1",
-          "Выбор изображений для фона из списка", "understars_v1.jpeg")
+      TemplateCard("Классика", "classic_v1", "Возможность изменять размеры карты", "classic_v1.jpeg"),
+      TemplateCard("Полусфера", "half_v1", "Изменение высоты полусферы", "half_v1.jpeg"),
+      TemplateCard("Полароид", "polaroid_v1", "Возможность изменять отступ карты и ее высоту", "polaroid_v1.jpeg"),
+      TemplateCard("Полная", "full_v1", "Различный выбор цвета и размера блока с текстом", "full_v1.jpeg"),
+      TemplateCard("Под звездами", "understars_v1", "Выбор изображений для фона из списка", "understars_v1.jpeg")
     ]);
   }
 

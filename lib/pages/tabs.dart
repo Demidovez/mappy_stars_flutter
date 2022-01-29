@@ -43,7 +43,6 @@ class _TabsState extends State<Tabs> {
               style: const TextStyle(
                 color: Color(0xFF4a5660),
                 fontWeight: FontWeight.w800,
-                // fontSize: 20
               ),
             ),
           ),
@@ -72,9 +71,7 @@ class _TabsState extends State<Tabs> {
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/icons/templates.svg',
-                  color: _currentIndex == 0
-                      ? const Color(0xFF4a5660)
-                      : const Color(0xFFA2A6AA),
+                  color: _currentIndex == 0 ? const Color(0xFF4a5660) : const Color(0xFFA2A6AA),
                   width: 25,
                 ),
                 label: '',
@@ -82,9 +79,7 @@ class _TabsState extends State<Tabs> {
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/icons/projects.svg',
-                  color: _currentIndex == 1
-                      ? const Color(0xFF4a5660)
-                      : const Color(0xFFA2A6AA),
+                  color: _currentIndex == 1 ? const Color(0xFF4a5660) : const Color(0xFFA2A6AA),
                   width: 25,
                 ),
                 label: '',
@@ -92,9 +87,7 @@ class _TabsState extends State<Tabs> {
               BottomNavigationBarItem(
                   icon: SvgPicture.asset(
                     'assets/icons/settings.svg',
-                    color: _currentIndex == 2
-                        ? const Color(0xFF4a5660)
-                        : const Color(0xFFA2A6AA),
+                    color: _currentIndex == 2 ? const Color(0xFF4a5660) : const Color(0xFFA2A6AA),
                     width: 25,
                   ),
                   label: '')

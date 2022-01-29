@@ -22,11 +22,7 @@ class TemplateCardItem extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                    flex: 2,
-                    child: Image(
-                        image:
-                            AssetImage('assets/images/' + template.imageName))),
+                Expanded(flex: 2, child: Image(image: AssetImage('assets/images/' + template.imageName))),
                 Expanded(
                   flex: 3,
                   child: Padding(
@@ -40,8 +36,7 @@ class TemplateCardItem extends StatelessWidget {
                           children: [
                             Text(
                               template.title,
-                              style: const TextStyle(
-                                  fontSize: 19, fontWeight: FontWeight.w700),
+                              style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w700),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 8.0),
@@ -74,8 +69,7 @@ class TemplateCardItem extends StatelessWidget {
           ),
         ),
         elevation: 0,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8))),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
       ),
     );
   }

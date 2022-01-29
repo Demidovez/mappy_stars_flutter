@@ -4,6 +4,5 @@ class SettingLink {
   final String iconName;
   final bool isChangeColorIcon;
 
-  SettingLink(this.title, this.type, this.iconName,
-      [this.isChangeColorIcon = true]);
+  SettingLink(this.title, this.type, this.iconName, [this.isChangeColorIcon = true]);
 }
