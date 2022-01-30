@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mappy_stars/models/controller_tab.dart';
 
+import 'controllers/canvas_v1.dart';
+import 'controllers/event_v1.dart';
+import 'controllers/save_v1.dart';
+
 class ControllerTabs extends StatefulWidget {
   const ControllerTabs({Key? key}) : super(key: key);
 
@@ -20,14 +24,14 @@ class _ControllerTabsState extends State<ControllerTabs> with SingleTickerProvid
     super.initState();
 
     tabs.addAll([
-      ControllerTab("Событие", "event_tab.svg", const Text("Событие")),
-      ControllerTab("Холст", "canvas_tab.svg", const Text("Холст")),
-      ControllerTab("Карта", "map_tab.svg", const Text("Карта")),
-      ControllerTab("Звезды", "stars_tab.svg", const Text("Звезды")),
-      ControllerTab("Текст", "desc_tab.svg", const Text("Текст")),
-      ControllerTab("Разделитель", "separator_tab.svg", const Text("Разделитель")),
-      ControllerTab("Локация", "location_tab.svg", const Text("Локация")),
-      ControllerTab("Сохранение", "save_tab.svg", const Text("Сохранение"))
+      ControllerTab("Событие", "event_tab.svg", () => const EventV1Controller()),
+      ControllerTab("Холст", "canvas_tab.svg", () => const CanvasV1Controller()),
+      ControllerTab("Карта", "map_tab.svg", () => const EventV1Controller()),
+      ControllerTab("Звезды", "stars_tab.svg", () => const EventV1Controller()),
+      ControllerTab("Текст", "desc_tab.svg", () => const EventV1Controller()),
+      ControllerTab("Разделитель", "separator_tab.svg", () => const EventV1Controller()),
+      ControllerTab("Локация", "location_tab.svg", () => const EventV1Controller()),
+      ControllerTab("Сохранение", "save_tab.svg", () => const SaveV1Controller())
     ]);
 
     _tabController = TabController(vsync: this, length: tabs.length);
@@ -98,7 +102,7 @@ class _ControllerTabsState extends State<ControllerTabs> with SingleTickerProvid
                               ),
                               Text(
                                 tab.title,
-                                style: TextStyle(fontWeight: FontWeight.w600),
+                                style: const TextStyle(fontWeight: FontWeight.w600),
                               ),
                             ],
                           ),
@@ -112,8 +116,10 @@ class _ControllerTabsState extends State<ControllerTabs> with SingleTickerProvid
                     physics: const NeverScrollableScrollPhysics(),
                     controller: _tabController,
                     children: tabs
-                        .map((tab) => Center(
-                              child: tab.controller,
+                        .map((tab) => SingleChildScrollView(
+                              physics: const BouncingScrollPhysics(),
+                              padding: const EdgeInsets.only(bottom: 4.0),
+                              child: tab.controller(),
                             ))
                         .toList()),
               ),
