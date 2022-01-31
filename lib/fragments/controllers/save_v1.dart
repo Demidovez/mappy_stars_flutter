@@ -30,8 +30,9 @@ class _SaveV1ControllerState extends State<SaveV1Controller> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Label("Формат файла"),
-        ListVariants<TemplateFileType>(
-            height: 60.0, data: fileTypes, item: (TemplateFileType type) => TemplateFileItem(type))
+        //   ListVariants<TemplateFileType>(
+        //       height: 60.0, data: fileTypes, item: (TemplateFileType type) => TemplateFileItem(type))
+        //
       ],
     );
   }
