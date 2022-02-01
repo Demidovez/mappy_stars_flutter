@@ -17,7 +17,10 @@ class ColorItem extends StatelessWidget {
               'assets/icons/colors.svg',
               width: 1,
             )
-          : Container(color: color),
+          : Container(
+              color: color,
+            ),
+      splashColor: Colors.transparent,
     );
   }
 }

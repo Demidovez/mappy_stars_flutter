@@ -34,12 +34,13 @@ class _AppState extends State<App> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          scaffoldBackgroundColor: const Color(0xFFEDEEF1),
-          primaryColor: const Color(0xFF4a5660),
-          fontFamily: "Nunito",
-          textTheme: const TextTheme(
-            bodyText2: TextStyle(color: Color(0xFF4a5660)),
-          )),
+        scaffoldBackgroundColor: const Color(0xFFEDEEF1),
+        primaryColor: const Color(0xFF4a5660),
+        fontFamily: "Nunito",
+        textTheme: const TextTheme(
+          bodyText2: TextStyle(color: Color(0xFF4a5660)),
+        ),
+      ),
       initialRoute: Routes.Tabs,
       routes: {
         Routes.Tabs: (context) => const Tabs(),
