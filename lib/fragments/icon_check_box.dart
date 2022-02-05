@@ -39,7 +39,7 @@ class IconCheckbox extends StatelessWidget {
                 borderRadius: BorderRadius.circular(3.0),
                 border: Border.all(
                   color: borderColor,
-                  width: 1,
+                  width: 2,
                 )),
             width: size,
             height: size,

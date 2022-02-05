@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mappy_stars/models/holst.dart';
 
-typedef Callback = void Function(Holst holst);
+typedef Callback = void Function(int holstId, BuildContext context);
 
 class HolstItem extends StatelessWidget {
   final Holst holst;
@@ -13,7 +13,7 @@ class HolstItem extends StatelessWidget {
     return InkWell(
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
-      onTap: () => setActive(holst),
+      onTap: () => setActive(holst.id, context),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
         child: Column(

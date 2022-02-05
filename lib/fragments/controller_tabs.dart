@@ -89,7 +89,8 @@ class _ControllerTabsState extends State<ControllerTabs> with SingleTickerProvid
                     return Tab(
                         height: heightBar,
                         child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: verticalPaddingBar, horizontal: 12.0),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: verticalPaddingBar, horizontal: 12.0),
                           child: Row(
                             children: [
                               SvgPicture.asset(

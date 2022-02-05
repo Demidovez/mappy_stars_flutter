@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-typedef Callback = void Function(double value);
+typedef Callback = void Function(double value, BuildContext context);
 
 class SliderPercentage extends StatefulWidget {
   final double value;
@@ -44,7 +44,7 @@ class _SliderPercentageState extends State<SliderPercentage> {
                 activeColor: const Color(0xFF4a5660),
                 inactiveColor: const Color(0xFF4a5660).withOpacity(0.2),
                 label: widget.value.round().toString(),
-                onChanged: (double value) => widget.onChange(value),
+                onChanged: (double value) => widget.onChange(value, context),
               ),
             ),
           )

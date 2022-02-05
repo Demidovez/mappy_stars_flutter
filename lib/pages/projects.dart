@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mappy_stars/fragments/project_card_item.dart';
-import 'package:mappy_stars/fragments/template_card_item.dart';
 import 'package:mappy_stars/models/project_card.dart';
-import 'package:mappy_stars/models/template_card.dart';
 
 class Projects extends StatefulWidget {
   const Projects({Key? key}) : super(key: key);

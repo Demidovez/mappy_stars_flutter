@@ -45,12 +45,16 @@ class _ListVariantsState<T> extends State<ListVariants<T>> {
                     ? RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(6.0),
                         side: BorderSide(
-                            color: widget.activeIndex == index ? const Color(0xFF4a5660) : Colors.transparent,
-                            width: 2.0))
+                            color: widget.activeIndex == index
+                                ? const Color(0xFF4a5660)
+                                : Colors.transparent,
+                            width: 3.0))
                     : CircleBorder(
                         side: BorderSide(
-                            color: widget.activeIndex == index ? const Color(0xFF4a5660) : Colors.transparent,
-                            width: 2.0)),
+                            color: widget.activeIndex == index
+                                ? const Color(0xFF4a5660)
+                                : Colors.transparent,
+                            width: 3.0)),
                 child: Card(
                   elevation: 0,
                   margin: const EdgeInsets.all(1.0),
@@ -70,7 +74,8 @@ class _ListVariantsState<T> extends State<ListVariants<T>> {
                                   : const Color(0xFF4a5660).withOpacity(0.3),
                               width: 1.0)),
                   child: Container(
-                      constraints: BoxConstraints(minWidth: widget.height), child: widget.item(widget.data[index])),
+                      constraints: BoxConstraints(minWidth: widget.height),
+                      child: widget.item(widget.data[index])),
                 ),
               ),
             );

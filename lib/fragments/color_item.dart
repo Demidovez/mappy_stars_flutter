@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-typedef Callback = void Function(Color color);
+typedef Callback = void Function(Color color, BuildContext context);
 
 class ColorItem extends StatelessWidget {
   final Color color;
@@ -11,7 +11,7 @@ class ColorItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => setActive(color),
+      onTap: () => setActive(color, context),
       child: color == Colors.transparent
           ? SvgPicture.asset(
               'assets/icons/colors.svg',
