@@ -8,11 +8,11 @@ class CanvasBloc extends Bloc<CanvasEvent, CanvasState> {
   CanvasBloc()
       : super(CanvasState(
           holstId: 0,
-          holstColor: const Color(0xFF1ABC9C),
+          holstColor: const Color(0xFFFFFFFF),
           hasBorderCanvas: true,
-          indentBorder: 35,
-          sizeBorder: 65,
-          holstBorderColor: const Color(0xFF1ABC9C),
+          indentBorder: 15,
+          sizeBorder: 3,
+          holstBorderColor: const Color(0xFF000000),
         )) {
     on<HolstIdCanvasEvent>((event, emit) {
       emit(state.copyWith(holstId: event.value));

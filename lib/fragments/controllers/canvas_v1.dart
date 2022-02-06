@@ -40,10 +40,6 @@ class CanvasV1Controller extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Holst> _holsts = context.read<DataBloc>().state.holsts;
-    List<Color> _colorsHolst = context.read<DataBloc>().state.colorsHolst;
-    List<Color> _colorsBorder = context.read<DataBloc>().state.colorsBorder;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -53,6 +49,8 @@ class CanvasV1Controller extends StatelessWidget {
             return state.holstId;
           },
           builder: (context, state) {
+            List<Holst> _holsts = context.select((DataBloc bloc) => bloc.state.holsts);
+
             return ListVariants<Holst>(
                 data: _holsts,
                 activeIndex: state,
@@ -65,6 +63,8 @@ class CanvasV1Controller extends StatelessWidget {
             return state.holstColor;
           },
           builder: (context, state) {
+            List<Color> _colorsHolst = context.select((DataBloc bloc) => bloc.state.colorsHolst);
+
             return ListVariants<Color>(
                 height: 50,
                 shape: EShape.circle,
@@ -105,6 +105,8 @@ class CanvasV1Controller extends StatelessWidget {
             return state.holstBorderColor;
           },
           builder: (context, state) {
+            List<Color> _colorsBorder = context.select((DataBloc bloc) => bloc.state.colorsBorder);
+
             return ListVariants<Color>(
                 height: 50,
                 shape: EShape.circle,

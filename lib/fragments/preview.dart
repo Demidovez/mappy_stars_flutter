@@ -1,198 +1,112 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mappy_stars/bloc/controllers/canvas_v1/canvas_bloc.dart';
+import 'package:mappy_stars/fragments/draw_layers/holst_painter.dart';
+import 'package:mappy_stars/fragments/draw_layers/location_painter.dart';
+import 'package:mappy_stars/fragments/save_to_file.dart';
+import 'draw_layers/desc_painter.dart';
+import 'draw_layers/map_painter.dart';
+import 'draw_layers/separator_painter.dart';
 
 class Preview extends StatelessWidget {
   const Preview({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    String date = "27 января 2022 г.";
-    String time = "22:42";
-    String location = "Москва, Россия";
-    String latitude = "55.232341";
-    String longtitude = "34.444444";
+    return SaveToFile(
+      child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.15),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: const Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Builder(
+                builder: (BuildContext context) {
+                  bool hasHolstBorder =
+                      context.select((CanvasBloc bloc) => bloc.state.hasBorderCanvas);
+                  double indentHolstBorder =
+                      context.select((CanvasBloc bloc) => bloc.state.indentBorder);
+                  double sizeHolstBorder =
+                      context.select((CanvasBloc bloc) => bloc.state.sizeBorder);
+                  Color holstColor = context.select((CanvasBloc bloc) => bloc.state.holstColor);
+                  Color holstBorderColor =
+                      context.select((CanvasBloc bloc) => bloc.state.holstBorderColor);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            const Text(
-              "Дата: ",
-              style: TextStyle(fontSize: 10),
-            ),
-            Text(
-              date,
-              style: const TextStyle(fontSize: 10),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            const Text(
-              "Время: ",
-              style: TextStyle(fontSize: 10),
-            ),
-            Text(
-              time,
-              style: const TextStyle(fontSize: 10),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            const Text(
-              "Место: ",
-              style: TextStyle(fontSize: 10),
-            ),
-            Text(
-              location,
-              style: const TextStyle(fontSize: 10),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            const Text(
-              "Широта: ",
-              style: TextStyle(fontSize: 10),
-            ),
-            Text(
-              latitude,
-              style: const TextStyle(fontSize: 10),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            const Text(
-              "Долгота: ",
-              style: TextStyle(fontSize: 10),
-            ),
-            Text(
-              longtitude,
-              style: const TextStyle(fontSize: 10),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            const Text(
-              "Холст: ",
-              style: TextStyle(fontSize: 10),
-            ),
-            BlocSelector<CanvasBloc, CanvasState, int>(
-              selector: (state) {
-                return state.holstId;
-              },
-              builder: (context, state) {
-                return Text(
-                  state.toString(),
-                  style: const TextStyle(fontSize: 10),
-                );
-              },
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            const Text(
-              "Цвет холста: ",
-              style: TextStyle(fontSize: 10),
-            ),
-            BlocSelector<CanvasBloc, CanvasState, Color>(
-              selector: (state) {
-                return state.holstColor;
-              },
-              builder: (context, state) {
-                return Container(
-                  color: state,
-                  width: 50,
-                  height: 8,
-                );
-              },
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            const Text(
-              "Добавить рамку холста: ",
-              style: TextStyle(fontSize: 10),
-            ),
-            BlocSelector<CanvasBloc, CanvasState, bool>(
-              selector: (state) {
-                return state.hasBorderCanvas;
-              },
-              builder: (context, state) {
-                return Text(
-                  state.toString(),
-                  style: const TextStyle(fontSize: 10),
-                );
-              },
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            const Text(
-              "Отступ рамки холста: ",
-              style: TextStyle(fontSize: 10),
-            ),
-            BlocSelector<CanvasBloc, CanvasState, double>(
-              selector: (state) {
-                return state.indentBorder;
-              },
-              builder: (context, state) {
-                return Text(
-                  state.toString(),
-                  style: const TextStyle(fontSize: 10),
-                );
-              },
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            const Text(
-              "Размер рамки холста: ",
-              style: TextStyle(fontSize: 10),
-            ),
-            BlocSelector<CanvasBloc, CanvasState, double>(
-              selector: (state) {
-                return state.sizeBorder;
-              },
-              builder: (context, state) {
-                return Text(
-                  state.toString(),
-                  style: const TextStyle(fontSize: 10),
-                );
-              },
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            const Text(
-              "Цвет рамки холста: ",
-              style: TextStyle(fontSize: 10),
-            ),
-            BlocSelector<CanvasBloc, CanvasState, Color>(
-              selector: (state) {
-                return state.holstBorderColor;
-              },
-              builder: (context, state) {
-                return Container(
-                  color: state,
-                  width: 50,
-                  height: 8,
-                );
-              },
-            ),
-          ],
-        )
-      ],
+                  print("==== Holst ==========" + DateTime.now().toString());
+
+                  return RepaintBoundary(
+                    child: CustomPaint(
+                        painter: HolstPainter(
+                            indentHolstBorder: indentHolstBorder,
+                            sizeHolstBorder: sizeHolstBorder,
+                            holstColor: holstColor,
+                            holstBorderColor: holstBorderColor,
+                            hasHolstBorder: hasHolstBorder)),
+                  );
+                },
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  BlocBuilder<CanvasBloc, CanvasState>(
+                    buildWhen: (previous, current) => false,
+                    builder: (context, state) {
+                      double indent = 20.0;
+
+                      return Padding(
+                        padding: EdgeInsets.only(top: indent),
+                        child: Container(
+                            width: 100,
+                            height: 100,
+                            color: Colors.green.withOpacity(0.5),
+                            child: RepaintBoundary(child: CustomPaint(painter: MapPainter()))),
+                      );
+                    },
+                  ),
+                  BlocBuilder<CanvasBloc, CanvasState>(
+                      buildWhen: (previous, current) => false,
+                      builder: (context, state) {
+                        // ignore: avoid_print
+                        print("====  Desc  ==========" + DateTime.now().toString());
+
+                        return const DescPainter();
+                      }),
+                  BlocBuilder<CanvasBloc, CanvasState>(
+                      buildWhen: (previous, current) => false,
+                      builder: (context, state) {
+                        // ignore: avoid_print
+                        print("====  Separator  ==========" + DateTime.now().toString());
+
+                        return const SeparatorPainter();
+                      }),
+                  BlocBuilder<CanvasBloc, CanvasState>(
+                      buildWhen: (previous, current) => false,
+                      builder: (context, state) {
+                        double sizeHolstBorder =
+                            context.select((CanvasBloc bloc) => bloc.state.sizeBorder);
+                        double indentHolstBorder =
+                            context.select((CanvasBloc bloc) => bloc.state.indentBorder);
+                        // ignore: avoid_print
+                        print("====  Location  ==========" + DateTime.now().toString());
+
+                        return Padding(
+                          padding: EdgeInsets.only(bottom: indentHolstBorder + sizeHolstBorder + 3),
+                          child: LocationPainter(),
+                        );
+                      }),
+                ],
+              )
+            ],
+          )),
     );
   }
 }
