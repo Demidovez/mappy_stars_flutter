@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 // ignore: todo
 // TODO: Некоректное название
 class LocationPainter extends StatelessWidget {
-  LocationPainter({Key? key}) : super(key: key);
+  const LocationPainter({Key? key}) : super(key: key);
 
-  TextStyle style = const TextStyle(fontSize: 10);
+  final TextStyle style = const TextStyle(fontSize: 10);
 
   @override
   Widget build(BuildContext context) {

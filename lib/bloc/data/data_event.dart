@@ -20,3 +20,9 @@ class HolstBorderColorsDataEvent extends DataEvent {
 
   HolstBorderColorsDataEvent({required this.value});
 }
+
+class TemplateFileTypesDataEvent extends DataEvent {
+  final List<TemplateFileType> value;
+
+  TemplateFileTypesDataEvent({required this.value});
+}

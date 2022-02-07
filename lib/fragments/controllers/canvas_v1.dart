@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mappy_stars/bloc/controllers/canvas_v1/canvas_bloc.dart';
+import 'package:mappy_stars/bloc/controllers/canvas/canvas_bloc.dart';
 import 'package:mappy_stars/bloc/data/data_bloc.dart';
 import 'package:mappy_stars/models/holst.dart';
 

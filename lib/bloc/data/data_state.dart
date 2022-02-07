@@ -4,7 +4,9 @@ class DataState {
   final List<Holst> holsts;
   final List<Color> colorsHolst;
   final List<Color> colorsBorder;
+  final List<TemplateFileType> templateFileTypes;
 
+  // ignore: todo
   // TODO: Перенести дефолтные значение в API
   DataState(
       {this.holsts = const [
@@ -60,13 +62,19 @@ class DataState {
         Color(0xFFBDC3C7),
         Color(0xFF95A5A6),
         Color(0xFF7F8C8D)
-      ]});
+      ],
+      this.templateFileTypes = const [TemplateFileType(0, "JPG"), TemplateFileType(1, "PDF")]});
 
-  DataState copyWith({List<Holst>? holsts, List<Color>? colorsHolst, List<Color>? colorsBorder}) {
+  DataState copyWith(
+      {List<Holst>? holsts,
+      List<Color>? colorsHolst,
+      List<Color>? colorsBorder,
+      List<TemplateFileType>? templateFileTypes}) {
     return DataState(
       holsts: holsts ?? this.holsts,
       colorsHolst: colorsHolst ?? this.colorsHolst,
       colorsBorder: colorsBorder ?? this.colorsBorder,
+      templateFileTypes: templateFileTypes ?? this.templateFileTypes,
     );
   }
 }

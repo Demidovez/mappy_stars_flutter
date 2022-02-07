@@ -1,19 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mappy_stars/bloc/controllers/canvas_v1/canvas_bloc.dart';
+import 'package:mappy_stars/bloc/controllers/canvas/canvas_bloc.dart';
+import 'package:mappy_stars/bloc/controllers/save/save_bloc.dart';
 import 'package:mappy_stars/fragments/draw_layers/holst_painter.dart';
 import 'package:mappy_stars/fragments/draw_layers/location_painter.dart';
-import 'package:mappy_stars/fragments/save_to_file.dart';
 import 'draw_layers/desc_painter.dart';
 import 'draw_layers/map_painter.dart';
 import 'draw_layers/separator_painter.dart';
 
-class Preview extends StatelessWidget {
+class Preview extends StatefulWidget {
   const Preview({Key? key}) : super(key: key);
 
   @override
+  State<Preview> createState() => _PreviewState();
+}
+
+class _PreviewState extends State<Preview> {
+  final GlobalKey _globalKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<SaveBloc>().add(GlobalKeyPreviewSaveEvent(value: _globalKey));
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SaveToFile(
+    return RepaintBoundary(
+      key: _globalKey,
       child: Container(
           decoration: BoxDecoration(
             color: Colors.white,

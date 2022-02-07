@@ -1,5 +1,6 @@
 class TemplateFileType {
+  final int id;
   final String title;
 
-  TemplateFileType(this.title);
+  const TemplateFileType(this.id, this.title);
 }
