@@ -1,14 +1,12 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mappy_stars/models/template_file_type.dart';
-import 'dart:ui' as ui;
+
 import 'package:permission_handler/permission_handler.dart';
 
 import '../../bloc/controllers/save/save_bloc.dart';
 import '../../bloc/data/data_bloc.dart';
+import '../bottom_sheets/download_bottom_sheet.dart';
 import '../label.dart';
 import '../list_variants.dart';
 import '../template_file_item.dart';
@@ -21,18 +19,6 @@ class SaveV1Controller extends StatelessWidget {
   }
 
   void savePreviewToFile(BuildContext context) async {
-    GlobalKey keyPreview = context.read<SaveBloc>().state.globalKeyPreview;
-
-    RenderRepaintBoundary repaintBoundary =
-        keyPreview.currentContext?.findRenderObject() as RenderRepaintBoundary;
-
-    double pixelRatio = MediaQuery.of(context).devicePixelRatio;
-
-    final ui.Image image = await repaintBoundary.toImage(pixelRatio: pixelRatio);
-    final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
-
-    final pngBytes = byteData?.buffer.asUint8List();
-
     PermissionStatus status = await Permission.storage.status;
 
     if (!status.isGranted) {
@@ -42,31 +28,15 @@ class SaveV1Controller extends StatelessWidget {
     }
 
     if (status.isGranted) {
-      File("/storage/emulated/0/Download/my_image.png").writeAsBytes(pngBytes!).then((value) {
-        showDialog(
+      showModalBottomSheet<void>(
+          backgroundColor: Colors.transparent,
           context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: const Text('AlertDialog Title'),
-              content: SingleChildScrollView(
-                child: ListBody(
-                  children: <Widget>[
-                    Text(value.path),
-                  ],
-                ),
-              ),
-              actions: <Widget>[
-                TextButton(
-                  child: const Text('Approve'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            );
-          },
-        );
-      });
+          isScrollControlled: true,
+          builder: (_) {
+            GlobalKey keyPreview = context.read<SaveBloc>().state.globalKeyPreview;
+
+            return DownloadBottomSheet(keyPreview: keyPreview);
+          });
     }
   }
 
