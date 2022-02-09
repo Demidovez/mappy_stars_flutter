@@ -4,9 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mappy_stars/bloc/controllers/canvas/canvas_bloc.dart';
 import 'package:mappy_stars/fragments/controller_tabs.dart';
-import 'package:mappy_stars/fragments/preview.dart';
+import 'package:mappy_stars/fragments/preview/preview.dart';
 
+import '../bloc/controllers/map/map_bloc.dart';
 import '../bloc/controllers/save/save_bloc.dart';
+import '../bloc/map_layers/map_layers_bloc.dart';
 
 class Template extends StatefulWidget {
   const Template({Key? key}) : super(key: key);
@@ -41,6 +43,12 @@ class _TemplateState extends State<Template> {
           ),
           BlocProvider<SaveBloc>(
             create: (BuildContext context) => SaveBloc(),
+          ),
+          BlocProvider<MapBloc>(
+            create: (BuildContext context) => MapBloc(),
+          ),
+          BlocProvider<MapLayersBloc>(
+            create: (BuildContext context) => MapLayersBloc(),
           ),
         ],
         child: Column(

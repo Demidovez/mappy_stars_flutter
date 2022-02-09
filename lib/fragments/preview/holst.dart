@@ -1,13 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HolstPainter extends CustomPainter {
+import '../../bloc/controllers/canvas/canvas_bloc.dart';
+
+class Holst extends StatelessWidget {
+  const Holst({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Builder(
+      builder: (BuildContext context) {
+        bool hasHolstBorder = context.select((CanvasBloc bloc) => bloc.state.hasBorderCanvas);
+        double indentHolstBorder = context.select((CanvasBloc bloc) => bloc.state.indentBorder);
+        double sizeHolstBorder = context.select((CanvasBloc bloc) => bloc.state.sizeBorder);
+        Color holstColor = context.select((CanvasBloc bloc) => bloc.state.holstColor);
+        Color holstBorderColor = context.select((CanvasBloc bloc) => bloc.state.holstBorderColor);
+
+        print("==== Holst ==========" + DateTime.now().toString());
+
+        return RepaintBoundary(
+          child: CustomPaint(
+              painter: _HolstPainter(
+                  indentHolstBorder: indentHolstBorder,
+                  sizeHolstBorder: sizeHolstBorder,
+                  holstColor: holstColor,
+                  holstBorderColor: holstBorderColor,
+                  hasHolstBorder: hasHolstBorder)),
+        );
+      },
+    );
+  }
+}
+
+class _HolstPainter extends CustomPainter {
   final double indentHolstBorder;
   final double sizeHolstBorder;
   final Color holstColor;
   final Color holstBorderColor;
   final bool hasHolstBorder;
 
-  HolstPainter(
+  _HolstPainter(
       {required this.indentHolstBorder,
       required this.sizeHolstBorder,
       required this.holstColor,
@@ -35,7 +67,7 @@ class HolstPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(HolstPainter oldDelegate) {
+  bool shouldRepaint(_HolstPainter oldDelegate) {
     return indentHolstBorder != oldDelegate.indentHolstBorder ||
         sizeHolstBorder != oldDelegate.sizeHolstBorder ||
         holstColor != oldDelegate.holstColor ||

@@ -4,6 +4,7 @@ import 'package:mappy_stars/models/controller_tab.dart';
 
 import 'controllers/canvas_v1.dart';
 import 'controllers/event_v1.dart';
+import 'controllers/map_v1.dart';
 import 'controllers/save_v1.dart';
 
 class ControllerTabs extends StatefulWidget {
@@ -26,7 +27,7 @@ class _ControllerTabsState extends State<ControllerTabs> with SingleTickerProvid
     tabs.addAll([
       ControllerTab("Событие", "event_tab.svg", () => const EventV1Controller()),
       ControllerTab("Холст", "canvas_tab.svg", () => const CanvasV1Controller()),
-      ControllerTab("Карта", "map_tab.svg", () => const EventV1Controller()),
+      ControllerTab("Карта", "map_tab.svg", () => const MapV1Controller()),
       ControllerTab("Звезды", "stars_tab.svg", () => const EventV1Controller()),
       ControllerTab("Текст", "desc_tab.svg", () => const EventV1Controller()),
       ControllerTab("Разделитель", "separator_tab.svg", () => const EventV1Controller()),
