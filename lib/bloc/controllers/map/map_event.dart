@@ -32,3 +32,10 @@ class ColorBorderMapEvent extends MapEvent {
 
   ColorBorderMapEvent({required this.value});
 }
+
+class MilkyWaysMapEvent extends MapEvent {
+  final double lat;
+  final double lon;
+
+  MilkyWaysMapEvent({required this.lat, required this.lon});
+}

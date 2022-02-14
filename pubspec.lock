@@ -71,6 +71,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  extra_pedantic:
+    dependency: transitive
+    description:
+      name: extra_pedantic
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.5.0"
   fake_async:
     dependency: transitive
     description:
@@ -109,6 +116,27 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  geodesy:
+    dependency: transitive
+    description:
+      name: geodesy
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.0-nullsafety.0"
+  geojson:
+    dependency: "direct main"
+    description:
+      name: geojson
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
+  geopoint:
+    dependency: transitive
+    description:
+      name: geopoint
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   intl:
     dependency: transitive
     description:
@@ -116,6 +144,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.17.0"
+  iso:
+    dependency: transitive
+    description:
+      name: iso
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   jiffy:
     dependency: "direct main"
     description:
@@ -123,10 +158,24 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.0.0"
+  latlong2:
+    dependency: transitive
+    description:
+      name: latlong2
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.8.1"
   lints:
     dependency: transitive
     description:
       name: lints
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
+  lists:
+    dependency: transitive
+    description:
+      name: lists
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
@@ -158,6 +207,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
+  mgrs_dart:
+    dependency: transitive
+    description:
+      name: mgrs_dart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   nested:
     dependency: transitive
     description:
@@ -186,6 +242,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  pedantic:
+    dependency: transitive
+    description:
+      name: pedantic
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.11.1"
   permission_handler:
     dependency: "direct main"
     description:
@@ -214,6 +277,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
+  proj4dart:
+    dependency: "direct main"
+    description:
+      name: proj4dart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   provider:
     dependency: transitive
     description:
@@ -226,6 +296,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  slugify:
+    dependency: transitive
+    description:
+      name: slugify
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   source_span:
     dependency: transitive
     description:
@@ -275,6 +352,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0"
+  unicode:
+    dependency: transitive
+    description:
+      name: unicode
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.1"
   vector_math:
     dependency: transitive
     description:
@@ -282,6 +366,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
+  wkt_parser:
+    dependency: transitive
+    description:
+      name: wkt_parser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   xml:
     dependency: transitive
     description:
