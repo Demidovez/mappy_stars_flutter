@@ -28,6 +28,11 @@ class MapStar extends StatelessWidget {
           },
         ),
         InkWell(
+          onLongPress: () {
+            context
+                .read<MapBloc>()
+                .add(MilkyWaysMapEvent(lat: -33.142535425255936, lon: 21.404136340248414));
+          },
           onTap: () {
             context.read<MapBloc>().add(MilkyWaysMapEvent(
                 lat: -90.0 + Random().nextInt(90 - (-90)) * Random().nextDouble(),
@@ -71,41 +76,57 @@ class _MilkyWayLayer extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final circleRandomPaint = Paint()
-      // ..color = Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
-      ..color = Colors.black;
+    final _originalMWpaint = Paint()
+      // ..color = Colors.white.withOpacity(0.08)
+      ..color = Colors.blue
+      ..style = PaintingStyle.fill
+      ..strokeCap = StrokeCap.round;
+    final _invertedMWpaint = Paint()
+      // ..color = Colors.white.withOpacity(0.08)
+      ..color = Colors.amber
+      ..style = PaintingStyle.fill
+      ..strokeCap = StrokeCap.round;
+    final _bgPaint = Paint()..color = Colors.black;
+    final _ovalPath = Path()..addOval(Rect.fromCircle(center: Offset.zero, radius: 190));
 
-    canvas.drawCircle(Offset(size.width / 2, size.height / 2), 190, circleRandomPaint);
-    // canvas.drawRect(Rect.fromLTWH(-190, -190, 380, 380), circleRandomPaint);
+    // canvas.drawCircle(Offset.zero, 190, _bgPaint);
+    canvas.drawRect(Rect.fromLTWH(-190, -190, 380, 380), _bgPaint);
+//milkywayPaths.length
+    for (int i = 0; i < 1; i++) {
+      final _originalPath = milkywayPaths[i];
+      final _invertedPath = Path.combine(PathOperation.difference, _ovalPath, _originalPath);
 
-    for (int i = 0; i < milkywayPaths.length; i++) {
-      final Paint _paint = Paint()
-        ..color = Colors.white.withOpacity(0.2)
-        ..strokeWidth = 1.0
-        ..style = PaintingStyle.fill
-        ..strokeCap = StrokeCap.round;
+      print("SIZE:");
+      print(_originalPath.getBounds().size);
+      print(_invertedPath.getBounds().size);
 
-      canvas.drawPath(milkywayPaths[i], _paint);
-      // if (i < 2) {
-      //   final Paint _paint = Paint()
-      //     ..color = Colors.black
-      //     ..strokeWidth = 1.0
-      //     ..style = PaintingStyle.fill
-      //     ..strokeCap = StrokeCap.round;
+      final _originalMetric = _originalPath
+          .computeMetrics(forceClosed: true)
+          .toList()
+          .map(
+            (e) => e.length,
+          )
+          .reduce((value, element) => value + element);
 
-      //   final Paint bg = Paint()..color = Colors.white.withOpacity(0.2);
+      final _invertedMetric = _invertedPath
+          .computeMetrics(forceClosed: true)
+          .toList()
+          .map(
+            (e) => e.length,
+          )
+          .reduce((value, element) => value + element);
 
-      //   canvas.drawCircle(Offset(size.width / 2, size.height / 2), 190, bg);
-      //   canvas.drawPath(milkywayPaths[i], _paint);
-      // } else {
-      //   final Paint _paint = Paint()
-      //     ..color = Colors.white.withOpacity(0.2)
-      //     ..strokeWidth = 1.0
-      //     ..style = PaintingStyle.fill
-      //     ..strokeCap = StrokeCap.round;
+      print("METRICS:");
+      print(_originalMetric);
+      print(_invertedMetric);
 
-      //   canvas.drawPath(milkywayPaths[i], _paint);
-      // }
+      if (_originalMetric > _invertedMetric) {
+        canvas.drawPath(_originalPath, _originalMWpaint);
+      } else {
+        canvas.drawPath(_originalPath, _originalMWpaint);
+      }
+
+      canvas.drawPath(_invertedPath, _invertedMWpaint);
     }
   }
 

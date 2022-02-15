@@ -50,7 +50,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
       double lat = event.lat;
       double lon = event.lon;
 
-      print("$lat $lon");
+      print("coords: $lat $lon");
 
       var projSrc = Projection.get('EPSG:4326')!;
       var projDst = Projection.parse(
@@ -101,6 +101,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
           }
         }
 
+        path.close();
         milkywayPaths.add(path);
       }
 
